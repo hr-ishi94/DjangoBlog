@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.text import slugify
 from django.db.models.signals import pre_save
 
+from ckeditor.fields import RichTextField
+
 class Category(models.Model):
     name= models.CharField(max_length=200)
 
@@ -29,10 +31,11 @@ class Post(models.Model):
     author=models.CharField(max_length=500)
     category=models.ForeignKey(Category,on_delete=models.CASCADE)
     date=models.DateField(auto_now_add=True)
-    content=models.TextField()
+    content=RichTextField()
     slug=models.SlugField(max_length=500,null=True,blank=True,unique=True)
     status=models.CharField(choices=STATUS,max_length=100)
     section=models.CharField(choices=SECTION,max_length=300)
+    mainpost=models.boo
 
     def __str__(self) :
         return self.title
