@@ -6,6 +6,9 @@ class TagTabularInline(admin.TabularInline):
 
 class PostAdmin(admin.ModelAdmin):
     inlines=[TagTabularInline]
+    list_display=('title','category','author','date','status','section','mainpost')
+    list_editable=('status','section','mainpost')
+    search_fields=('title','section')
 
 
 
