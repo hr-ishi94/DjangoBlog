@@ -9,9 +9,13 @@ def home(request):
     trending= Post.objects.filter(section = 'Trending').order_by('-id')
     inspiration=Post.objects.filter(section='Inspiration').order_by('-id')[:3]
     latest_post=Post.objects.filter(section='Latest_Posts').order_by('-id')[:4]
-    category=Category.objects.all()
+    categories=Category.objects.all()
     tags = Tag.objects.values('name').distinct()[:5]
-
+    count=dict()
+    for category in categories:
+        cat=Post.objects.filter(category=category).count()
+        count[category.name]=cat
+    print(count)
     
     context={
         'popular_post':popular_post,
@@ -21,8 +25,10 @@ def home(request):
         'trending':trending,
         'inspiration':inspiration,
         'latest_post':latest_post,
-        'category':category,
+        'categories':categories,
         'tags':tags,
+        'count':count
+
     }
 
     return render(request,'index.html',context)
