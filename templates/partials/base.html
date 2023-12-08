@@ -80,10 +80,10 @@
 							</ul>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="category.html">Lifestyle</a>
+							<a class="nav-link" href="{%url 'home:category' %}">Category</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="category.html">Inspiration</a>
+							<a class="nav-link" href="{%url 'home:editors_pick'%}">Editor's Pick</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#">Pages</a>
@@ -125,6 +125,8 @@
 			</div>
 		</nav>
 	</header>
+
+	
 
     {% block content %}{% endblock content %}
 
@@ -239,5 +241,5 @@
 
 </body>
 
-<!-- Mirrored from maanjaa.com/themeger/katen-demo/html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 03 Jul 2021 05:08:47 GMT -->
+
 </html>

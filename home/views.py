@@ -32,3 +32,25 @@ def home(request):
     }
 
     return render(request,'index.html',context)
+
+def category(request):
+    categories=Category.objects.all()
+    posts=Post.objects.all()
+    popular_posts=Post.objects.filter(section='Popular').order_by('-id')[:3]
+    editors_pick=Post.objects.filter(section='Editors_Pick').order_by('-id')[:3]
+    context={
+        'categories':categories,
+        'posts':posts,
+        'popular_posts':popular_posts,
+        'editors_pick':editors_pick
+    }
+    return render(request,'category.html',context)
+
+def editors_pick(request):
+    editors_pick=Post.objects.filter(section='Editors_Pick').order_by('-id')
+    categories=Category.objects.all()
+    context={
+        'editors_pick':editors_pick,
+        'categories':categories
+    }
+    return render(request,'editors_pick.html',context)
